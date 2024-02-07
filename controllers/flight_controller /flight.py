@@ -2,10 +2,33 @@
 #add comment 
 # You may need to import some classes of the controller module. Ex:
 #  from controller import Robot, Motor, DistanceSensor
-from controller import Robot
+from controller import Robot, GPS, DistanceSensor, Motor
+
+
+class Motor ():
+    
+    def __init__(self,robot:Robot):
+        self.lwheel:Motor = robot.getDevice('left wheel motor')
+        self.rwheel:Motor = robot.getDevice('right wheel motor')
+
+class monDrone(Robot):
+
+    def __init__(self):
+        super().__init__()
+        self.motors = Motor(self)
+
+        self.timestep = int(self.getBasicTimeStep())
+        self.ps0:DistanceSensor  = self.getDevice('ps0')
+        self.ps1:DistanceSensor  = self.getDevice('ps1')
+        self.ps6:DistanceSensor  = self.getDevice('ps6')
+        self.ps7:DistanceSensor  = self.getDevice('ps7')
+        self.ps0.enable(self.timestep)
+        self.ps7.enable(self.timestep)
+        self.ps1.enable(self.timestep)
+        self.ps6.enable(self.timestep)
 
 # create the Robot instance.
-robot = Robot()
+robot = monDrone()
 
 # get the time step of the current world.
 timestep = int(robot.getBasicTimeStep())
