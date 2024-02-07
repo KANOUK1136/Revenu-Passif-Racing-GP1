@@ -2,56 +2,42 @@
 
 # You may need to import some classes of the controller module. Ex:
 #  from controller import Robot, Motor, DistanceSensor
-from controller import Robot, Motor, DistanceSensor, Camera
+from controller import robot, motor
 
 class Motors():
 
-    def __init__(self, robot:Robot):
+    def __init__(self, robot):
         # Assigner une variable à un objet réel pour le contrôler 
-        self.lwheel:Motor = robot.getDevice('left wheel motor')
-        self.rwheel:Motor = robot.getDevice('right wheel motor')
+        self.flwheel:motor = robot.getDevice('front left wheel')
+        self.frwheel:motor = robot.getDevice('front right wheel')
+        self.blwheel:motor = robot.getDevice('rear left wheel')
+        self.brwheel:motor = robot.getDevice('rear right wheel')
 
     def forward(self):
-        self.lwheel.setPosition(float('inf'))
-        self.lwheel.setVelocity(6)
-        self.rwheel.setPosition(float('inf'))
-        self.rwheel.setVelocity(6)
+        self.flwheel.wb_set_motor_position(float('inf'))
+        self.flwheel.wb_set_motor_velocity(100)
+        self.frwheel.wb_set_motor_position(float('inf'))
+        self.frwheel.wb_set_motor_velocity(100)
+        self.blwheel.wb_set_motor_position(float('inf'))
+        self.blwheel.wb_set_motor_velocity(100)
+        self.brwheel.wb_set_motor_position(float('inf'))
+        self.brwheel.wb_set_motor_velocity(100)
 
 
-
-class monRobot(Robot):
+class monRobot(robot):
 
     def __init__(self):
         super().__init__()
         self.motors = Motors(self)
-        
-        # Assigner une variable aux capteurs de position pour les contrôler 
-        self.ps0:DistanceSensor = self.getDevice('ps0')
-        self.ps7:DistanceSensor = self.getDevice('ps7')
-        self.camera:Camera = self.getDevice('camera')
-
-        # Activer les capteurs
         self.timestep = int(self.getBasicTimeStep())
-        self.ps0.enable(self.timestep)
-        self.ps0.enable(self.timestep)
-
+       
 
     def run(self):
-
-        print("value ", self.camera.value)
-        
-        if (self.ps0.getValue() >= 80  or self.ps7.getValue() >= 80):
-            if self.ps0.getValue() >= self.ps7.getValue() :
-                self.motors.turn_left()
-            else :
-                self.motors.turn_right()
-        else : 
-            self.motors.forward()
+        self.motors.forward()
             
 
 # create the Robot instance.
-robot = monRobot()
-
+rosbot_1 = monRobot()
 
 # You should insert a getDevice-like function in order to get the
 # instance of a device of the robot. Something like:
@@ -61,10 +47,9 @@ robot = monRobot()
 
 # Main loop:
 # - perform simulation steps until Webots is stopping the controller
-while robot.step(robot.timestep) != -1:
+while rosbot_1.step(rosbot_1.timestep) != -1:
 
-    robot.run() # On avance et on esquive les murs 
-
+    rosbot_1.run() # On avance et on esquive les murs 
 
     # Read the sensors:
     # Enter here functions to read sensor data, like:
