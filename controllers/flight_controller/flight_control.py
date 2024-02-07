@@ -3,7 +3,7 @@
 # You may need to import some classes of the controller module. Ex:
 #  from controller import Robot, Motor, DistanceSensor
 from controller import Robot, Motor, DistanceSensor
-
+#La ziz
 class Motor():
     def __init__(self,robot:Robot):
         self.lwheel:Motor = robot.getDevice('left wheel motor')
