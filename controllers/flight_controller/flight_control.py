@@ -4,6 +4,7 @@
 #  from controller import Robot, Motor, DistanceSensor
 from controller import Robot, Motor, DistanceSensor
 #La ziz
+#zizicacamixtape
 class Motor():
     def __init__(self,robot:Robot):
         self.lwheel:Motor = robot.getDevice('left wheel motor')
