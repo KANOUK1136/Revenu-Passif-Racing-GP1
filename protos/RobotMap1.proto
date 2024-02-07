@@ -397,6 +397,7 @@ PROTO SummitXlSteel [
                     segmentation   FALSE   # {TRUE, FALSE}
               }
           }
+          
           RangeFinder {
             translation 0 0 0.015
             name "depth_camera"
