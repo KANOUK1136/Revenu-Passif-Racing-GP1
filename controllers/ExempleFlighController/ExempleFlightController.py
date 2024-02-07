@@ -27,7 +27,7 @@ from math import cos, sin
 
 import sys
 sys.path.append('../../../controllers')
-from pid_controller import pid_velocity_fixed_height_controller
+
 
 FLYING_ATTITUDE = 1
 
