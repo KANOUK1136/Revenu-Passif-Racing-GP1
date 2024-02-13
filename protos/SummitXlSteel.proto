@@ -7,7 +7,7 @@
 
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/appearances/protos/Plastic.proto"
 
-PROTO RobotMap1 [
+PROTO SummitXlSteel [
   field SFVec3f     translation     0 0 0.118           # Is `Transform.translation`.
   field SFRotation  rotation        0 0 1 0             # Is `Transform.rotation`.
   field SFString    name            "Summit-XL Steel"   # Is `Robot.name`.
@@ -395,16 +395,7 @@ PROTO RobotMap1 [
             fieldOfView 1.0472
             width 1280
             height 720
-                  recognition Recognition {
-                    maxRange       100     # [0, inf)
-                    maxObjects     -1      # {-1, [0, inf)}
-                    occlusion      TRUE       # {0, 1, 2}
-                    frameColor     1 0 0   # any color
-                    frameThickness 1       # [0, inf)
-                    segmentation   FALSE   # {TRUE, FALSE}
-              }
           }
-          
           RangeFinder {
             translation 0 0 0.015
             name "depth_camera"
