@@ -13,9 +13,9 @@
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/RoadLine.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Asphalt.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Pavement.proto"
-EXTERNPROTO "CrashBarrier.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/CrashBarrier.proto"
 
-PROTO Road [
+PROTO RoadRecognition [
   field        SFVec3f              translation               0 0 0
   field        SFRotation           rotation                  0 0 1 0
   field        SFString             name                      "road"                  # Optionally defines the street name.
@@ -210,7 +210,7 @@ PROTO Road [
     translation IS translation
     rotation IS rotation
     name IS name
-    model "road"
+    model "road-green"
     children [
       Group {
         children IS lines
@@ -260,8 +260,8 @@ PROTO Road [
             contactMaterial IS contactMaterial
             boundingObject USE ROAD_GEOMETRY
           %< } >%
-          #recognitionColors [ 0.2 0.2 0.2 ]
-          model "road"
+          #recognitionColors [ 0 1 0 ]
+          model "road-green"
         }
         # road signs (start)
         %<
@@ -473,8 +473,8 @@ PROTO Road [
                 }
               ]
               name "road line(%<= j - 1 >%)"
-              #recognitionColors [ 0 1 0 ]
-              model "road line"
+              # recognitionColors [ 0 1 0 ]
+              model "road-green line"
             }
           %< } >%
         %< } >%
@@ -554,7 +554,7 @@ PROTO Road [
             boundingObject USE RIGHT_BORDER_GEOMETRY
           %< } >%
           #recognitionColors [ 0.6 0.6 0.6 ]
-          model "road border"
+          model "road-green border"
         }
       %< } >%
       # left border
@@ -636,7 +636,7 @@ PROTO Road [
             boundingObject USE LEFT_BORDER_GEOMETRY
           %< } >%
           #recognitionColors [ 0.6 0.6 0.6 ]
-          model "road border"
+          model "road-green border"
         }
       %< } >%
       # handle the special bridge case

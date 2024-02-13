@@ -18,10 +18,12 @@ class monDrone(Robot):
         self.motors = Motor(self)
 
         self.timestep = int(self.getBasicTimeStep())
+
         self.ps0:DistanceSensor  = self.getDevice('ps0')
         self.ps1:DistanceSensor  = self.getDevice('ps1')
         self.ps6:DistanceSensor  = self.getDevice('ps6')
         self.ps7:DistanceSensor  = self.getDevice('ps7')
+
         self.ps0.enable(self.timestep)
         self.ps7.enable(self.timestep)
         self.ps1.enable(self.timestep)
@@ -53,3 +55,22 @@ while robot.step(timestep) != -1:
     pass
 
 # Enter here exit cleanup code.
+
+
+def in_out_tube() : 
+
+    tubes = [[[-49.7024,71.6138,3.95],[-57.2266,79.9015,3.95]],
+            [[-60.6527,74.8525,6.91],[-60.6527,66.2525,6.91]],
+            [[-62.4127,59.6225,9.82],[-73.0927,59.6925,9.91]],
+            [[-74.0827,68.5625,1.88],[-74.0827,82.1125,1.88]]]
+    for i in range(0,4):
+        print(tubes[i])
+
+    direction = []
+    tubes_order = [1,4,3,2]
+    for i in tubes_order :
+        direction.append(tubes[i-1])
+    print()
+    for i in range(0,4):
+        print(direction[i])
+in_out_tube()

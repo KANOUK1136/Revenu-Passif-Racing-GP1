@@ -1,36 +1,82 @@
-#VRML_SIM R2023a utf8
+#VRML_SIM R2023b utf8
 
-EXTERNPROTO "../protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "../protos/RoadLine.proto"
+EXTERNPROTO "../protos/SolidRoundedBox.proto"
+EXTERNPROTO "../protos/SolidPipe1.proto"
+EXTERNPROTO "../protos/SolidPipe2.proto"
+EXTERNPROTO "../protos/SolidPipe3.proto"
+EXTERNPROTO "../protos/SolidPipe4.proto"
+EXTERNPROTO "../protos/SummitXlSteel.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Asphalt.proto"
 EXTERNPROTO "../protos/Road.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/RoadLine.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/solids/protos/SolidRoundedBox.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/solids/protos/SolidPipe.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/robots/husarion/rosbot/protos/Rosbot.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/robots/robotnik/summit_xl_steel/protos/SummitXlSteel.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/obstacles/protos/Ramp30deg.proto"
 
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.02749596310324018 0.018751757115796002 0.9994460183612196 2.2702430426781923
-  position -16.620608526881426 21.33535550151529 0.4349099440760953
-}
-TexturedBackground {
-  texture "twilight_cloudy_empty"
+  orientation -0.14356667832304876 -0.8778779944696812 0.456857566098206 5.568255159181525
+  position -119.75103860583131 76.10548323804865 61.126589922183555
 }
 TexturedBackgroundLight {
 }
+TexturedBackground {
+  texture "twilight_cloudy_empty"
+  skyColor [
+    0 0 1
+  ]
+}
 RectangleArena {
-  translation 1.35639 0.411838 0
+  translation 1.62531 0.849485 5.68434e-14
   floorSize 35 35
   floorTileSize 20 20
   floorAppearance Parquetry {
     type "light strip"
   }
   wallThickness 0.5
-  wallHeight 1
+  wallHeight 0
+}
+Floor {
+  translation -15 22 0.01
+  name "Relay1"
+  size 5 5
+  appearance Parquetry {
+    colorOverride 1 0 1
+  }
+}
+Floor {
+  translation -45 52 0.01
+  name "Relay2"
+  size 5 5
+  appearance Parquetry {
+    colorOverride 0 1 1
+  }
+}
+Ramp30deg {
+  translation -14.1511 19.1333 3.55271e-15
+  rotation 0 0 1 1.8326
+}
+SummitXlSteel {
+  translation -12.2203 14.8895 0.116415
+  rotation -0.0043336699551277304 -0.0017999699813625078 0.9999889896457791 1.971
+  controller "my_controller"
+  frontLidarSlot [
+    Camera {
+      translation -0.119706 -0.169705 4.95119e-07
+      rotation 0.9238797538372345 -0.38268289803621075 5.077418647149253e-07 3.14159
+      name "camerarecognition"
+      width 200
+      height 200
+      recognition Recognition {
+        maxRange 1
+        occlusion 0
+      }
+    }
+  ]
 }
 RectangleArena {
   translation -29.7867 36.7686 1.03739e-12
@@ -54,28 +100,53 @@ RectangleArena {
   wallThickness 0.5
   wallHeight 1
 }
-SolidPipe {
+SolidPipe1 {
   translation -74.1397 75.406 2
   rotation 1 0 0 -1.5707953071795862
+  name "pipe4"
   height 12
+  appearance PBRAppearance {
+    baseColor 1 1 0
+    transparency 0.5
+    roughness 0.5
+    metalness 0
+  }
 }
-SolidPipe {
+SolidPipe2 {
   translation -60.6807 69.4101 7
   rotation 1 0 0 -1.5707953071795862
-  name "pipe(1)"
+  name "pipe2"
   height 5
+  appearance PBRAppearance {
+    baseColor 0 1 1
+    transparency 0.5
+    roughness 0.5
+    metalness 0
+  }
 }
-SolidPipe {
+SolidPipe3 {
   translation -53.934 76.2414 4
   rotation -0.8768880072093348 -0.33990200279450433 0.3399030027945126 1.7018
-  name "pipe(3)"
+  name "pipe1"
   height 8
+  appearance PBRAppearance {
+    baseColor 1 0 1
+    transparency 0.5
+    roughness 0.5
+    metalness 0
+  }
 }
-SolidPipe {
+SolidPipe4 {
   translation -68.7366 59.6817 10
   rotation -0.5697930319719425 0.5810920326059464 -0.5810920326059464 2.10577
-  name "pipe(2)"
+  name "pipe3"
   height 5
+  appearance PBRAppearance {
+    baseColor 0 1 0
+    transparency 0.5
+    roughness 0.5
+    metalness 0
+  }
 }
 SolidRoundedBox {
   translation -14.8371 31.6911 2
@@ -143,7 +214,8 @@ SolidRoundedBox {
   name "rounded box(1)"
 }
 Road {
-  translation -16 -15.5 0.25
+  translation -16 -15.5 0.006
+  name "mainroad"
   width 2
   lines [
     RoadLine {
@@ -151,7 +223,13 @@ Road {
       type "continuous"
     }
   ]
-  roadBorderHeight 0.4
+  roadBorderHeight 0.5
+  roadBorderWidth [
+    0.1
+  ]
+  rightBarrier TRUE
+  leftBarrier TRUE
+  bottom TRUE
   wayPoints [
     0 0 0
     10 0 0
@@ -163,64 +241,10 @@ Road {
     28 0 0
     35 30 0
     10 30 0
-    0 30 1
-    0 36 2
+    2 30 0
+    2 35.5 0
   ]
-}
-Rosbot {
-  hidden position_0_0 1537.9777752837128
-  hidden position_0_1 1504.4467395004574
-  hidden position_0_2 1537.9774777781724
-  hidden position_0_3 1504.43999219093
-  hidden linearVelocity_0 -0.007659590610901855 0.2578784396799935 -3.3179423851791963e-10
-  hidden angularVelocity_0 3.890508633663648e-08 -6.624439805165108e-07 -0.0038734976243473608
-  hidden translation_2 0.05 0.11 0.043
-  hidden rotation_2 0 1 0 4.8805603318937445
-  hidden linearVelocity_2 -0.007469312845512923 0.25826616896276783 -1.7750914634739267e-08
-  hidden angularVelocity_2 -6.007707549440075 -0.17424537949566962 -0.004048805358893302
-  hidden translation_3 0.05 -0.11 0.043
-  hidden rotation_3 0 -1 0 3.517734222643357
-  hidden linearVelocity_3 -0.007447219244581268 0.25750352768164775 1.975007344867461e-08
-  hidden angularVelocity_3 -5.986649579656459 -0.1736335820075677 -0.004047985458634015
-  hidden translation_4 -0.055 0.11 0.043
-  hidden rotation_4 0 1 0 4.880262826353342
-  hidden linearVelocity_4 -0.007875857821758507 0.2582532425605147 -1.9791754766915605e-08
-  hidden angularVelocity_4 -6.0077065445321445 -0.1742481448594256 -0.004051922064691061
-  hidden translation_5 -0.055 -0.11 0.043
-  hidden rotation_5 0 -0.9999999999999999 0 3.524481532170684
-  hidden linearVelocity_5 -0.007853767002854515 0.2574906001341941 1.7731660306933394e-08
-  hidden angularVelocity_5 -5.986648550782828 -0.17363652987013561 -0.00405089474715013
-  translation -15.778453810102462 -11.127051580681169 -0.00028295998054528315
-  rotation 7.0671354895436325e-06 -8.980577131226238e-06 -0.9999999999347025 -1.5997001909873303
-}
-SummitXlSteel {
-  hidden position_0_0 -20.984934113560726
-  hidden position_0_1 -1065.961900043133
-  hidden position_0_2 -132.64598726664596
-  hidden position_0_3 -954.778529823301
-  hidden linearVelocity_0 -0.9643473905262718 1.1681573496726085 -0.0018513914175265398
-  hidden angularVelocity_0 -0.04517374293300616 -0.08866784448307188 1.547166695824205
-  hidden translation_7 0.21980899514208924 -0.20449996661010172 -0.0017053238501725948
-  hidden rotation_7 -0.3626597605425961 0.6589668838362597 -0.6589693043612246 3.8374066708519226
-  hidden linearVelocity_7 -0.4890370335023707 1.193108669277316 0.03377608394572734
-  hidden angularVelocity_7 -5.11366359870191 -4.893893895928255 1.807169101790613
-  hidden translation_8 0.22511250429358765 0.20450003337390876 -0.0018202863814664725
-  hidden rotation_8 0.3462026063815344 0.6633779173239411 -0.6633803540515671 2.4750192381744505
-  hidden linearVelocity_8 -0.9361207880498932 1.6222536760244395 -0.03146959038304224
-  hidden angularVelocity_8 -12.777549948267433 -11.940939824194968 2.051507931148965
-  hidden translation_9 -0.22451993692848998 0.2045000329443426 0.0024012975221635578
-  hidden rotation_9 -0.8888473791199627 0.32399812147674995 -0.3239993115904884 4.594827309713954
-  hidden linearVelocity_9 -1.4312971340266345 1.1547491216553585 0.043186536385760414
-  hidden angularVelocity_9 -12.77738804724587 -11.941504587686277 2.0514078728607674
-  hidden translation_10 -0.22167655798917205 -0.20449996703966933 0.0030297151264787503
-  hidden rotation_10 0.9826139295381519 0.13128164163870448 -0.13128212386398527 1.58833808343633
-  hidden linearVelocity_10 -0.9768127899709542 0.6811249024433054 -0.04309196633593074
-  hidden angularVelocity_10 -5.113953906077391 -4.8944885891695575 1.8067134457845868
-  translation 8.110077325327444 -2.9923990001798564 0.10857968480210672
-  rotation 0.02171695643301477 -0.01899088017035041 0.9995837735145775 -0.7739555617318059
-}
-Rosbot {
-  translation -18.9926 23.8635 0.04
-  rotation 0 0 -1 -2.356185307179586
-  name "Rosbot(1)"
+  appearance Asphalt {
+    colorOverride 0 1 0
+  }
 }
