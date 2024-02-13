@@ -2,6 +2,7 @@
 #add comment 
 # You may need to import some classes of the controller module. Ex:
 #  from controller import Robot, Motor, DistanceSensor
+import numpy as np
 from controller import Robot, GPS, DistanceSensor, Motor
 
 
@@ -59,10 +60,10 @@ while robot.step(timestep) != -1:
 
 def in_out_tube() : 
 
-    tubes = [[[-49.7024,71.6138,3.95],[-57.2266,79.9015,3.95]],
-            [[-60.6527,74.8525,6.91],[-60.6527,66.2525,6.91]],
-            [[-62.4127,59.6225,9.82],[-73.0927,59.6925,9.91]],
-            [[-74.0827,68.5625,1.88],[-74.0827,82.1125,1.88]]]
+    tubes = [[[-52, 73, 4] [-56, 80, 4]], #Violet
+            [[-60, 72, 7] [-60, 67, 7]],  #Cyan
+            [[-72, 60, 10] [-66, 60, 10]], # wrong
+            [[-74, 70, 2] [-74, 82, 2]]]  #Jaune
     for i in range(0,4):
         print(tubes[i])
 
