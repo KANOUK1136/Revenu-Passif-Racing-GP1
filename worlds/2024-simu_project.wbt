@@ -1,26 +1,25 @@
-#VRML_SIM R2023b utf8
+#VRML_SIM R2023a utf8
 
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
 EXTERNPROTO "../protos/RoadLine.proto"
-EXTERNPROTO "../protos/SolidRoundedBox.proto"
 EXTERNPROTO "../protos/SolidPipe1.proto"
 EXTERNPROTO "../protos/SolidPipe2.proto"
 EXTERNPROTO "../protos/SolidPipe3.proto"
 EXTERNPROTO "../protos/SolidPipe4.proto"
-EXTERNPROTO "../protos/SummitXlSteel.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Asphalt.proto"
 EXTERNPROTO "../protos/Road.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/obstacles/protos/Ramp30deg.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/robots/bitcraze/crazyflie/protos/Crazyflie.proto"
 
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.14356667832304876 -0.8778779944696812 0.456857566098206 5.568255159181525
-  position -119.75103860583131 76.10548323804865 61.126589922183555
+  orientation 0.045459516239050375 -0.9958855297402558 -0.0783928825677542 5.326985179141314
+  position -51.7717879167231 54.39460296150726 5.221527335160212
 }
 TexturedBackgroundLight {
 }
@@ -59,24 +58,6 @@ Floor {
 Ramp30deg {
   translation -14.1511 19.1333 3.55271e-15
   rotation 0 0 1 1.8326
-}
-SummitXlSteel {
-  translation -12.2203 14.8895 0.116415
-  rotation -0.0043336699551277304 -0.0017999699813625078 0.9999889896457791 1.971
-  controller "my_controller"
-  frontLidarSlot [
-    Camera {
-      translation -0.119706 -0.169705 4.95119e-07
-      rotation 0.9238797538372345 -0.38268289803621075 5.077418647149253e-07 3.14159
-      name "camerarecognition"
-      width 200
-      height 200
-      recognition Recognition {
-        maxRange 1
-        occlusion 0
-      }
-    }
-  ]
 }
 RectangleArena {
   translation -29.7867 36.7686 1.03739e-12
@@ -148,71 +129,6 @@ SolidPipe4 {
     metalness 0
   }
 }
-SolidRoundedBox {
-  translation -14.8371 31.6911 2
-  size 5 10 5
-}
-SolidRoundedBox {
-  translation -34.8845 49.2527 2
-  name "rounded box(8)"
-  size 5 10 5
-}
-SolidRoundedBox {
-  translation -42.0283 31.498 2
-  rotation 0 0 1 1.56425
-  name "rounded box(7)"
-  size 5 10 5
-}
-SolidRoundedBox {
-  translation -21.8989 46.2055 1
-  rotation 0 0 -1 0.935933
-  name "rounded box(6)"
-  size 2 8 2
-}
-SolidRoundedBox {
-  translation -31.6855 27.8511 1
-  rotation 0 0 -1 0.00654517
-  name "rounded box(9)"
-  size 2 10 2
-}
-SolidRoundedBox {
-  translation -25.3049 38.1055 1
-  rotation 0 0 -1 0.00654517
-  name "rounded box(10)"
-  size 2 10 2
-}
-SolidRoundedBox {
-  translation -36.8578 34.4436 1
-  name "rounded box(2)"
-}
-SolidRoundedBox {
-  translation -33.087 38.1929 1
-  name "rounded box(3)"
-}
-SolidRoundedBox {
-  translation -30.8325 38.5037 1
-  name "rounded box(13)"
-}
-SolidRoundedBox {
-  translation -27.3083 32.8202 1
-  name "rounded box(4)"
-}
-SolidRoundedBox {
-  translation -23.1975 23.782 1
-  name "rounded box(12)"
-}
-SolidRoundedBox {
-  translation -29.4659 32.0037 1
-  name "rounded box(11)"
-}
-SolidRoundedBox {
-  translation -34.8504 36.1671 1
-  name "rounded box(5)"
-}
-SolidRoundedBox {
-  translation -20.0214 34.6029 1
-  name "rounded box(1)"
-}
 Road {
   translation -16 -15.5 0.006
   name "mainroad"
@@ -247,4 +163,11 @@ Road {
   appearance Asphalt {
     colorOverride 0 1 0
   }
+}
+Crazyflie {
+  hidden linearVelocity_0 -3.5323031820998357e-13 2.4770731064390535e-15 1.2147572355232176e-05
+  hidden angularVelocity_0 1.4478965275199343e-13 -2.6876363981407345e-13 -2.024396090042096e-15
+  translation -47.5699996487647 54.47437884913148 0.46318237194504747
+  rotation 7.368982645431389e-15 -2.9538111666069057e-15 1 1.5708000000001765
+  controller "Flight_Controller_Maxime"
 }
