@@ -105,87 +105,87 @@ if __name__ == '__main__':
     
     it_idx = 0
     
-    # Main loop:
-    while robot.step(timestep) != -1:
+    # # Main loop:
+    # while robot.step(timestep) != -1:
 
-        dt = robot.getTime() - past_time
-        actual_state = {}
+    #     dt = robot.getTime() - past_time
+    #     actual_state = {}
 
-        ## Get sensor data
-        roll = imu.getRollPitchYaw()[0]
-        pitch = imu.getRollPitchYaw()[1]
-        yaw = imu.getRollPitchYaw()[2]
-        yaw_rate = gyro.getValues()[2]
-        altitude = gps.getValues()[2]
-        x_global = gps.getValues()[0]
-        y_global = gps.getValues()[1]
+    #     ## Get sensor data
+    #     roll = imu.getRollPitchYaw()[0]
+    #     pitch = imu.getRollPitchYaw()[1]
+    #     yaw = imu.getRollPitchYaw()[2]
+    #     yaw_rate = gyro.getValues()[2]
+    #     altitude = gps.getValues()[2]
+    #     x_global = gps.getValues()[0]
+    #     y_global = gps.getValues()[1]
 
-        if it_idx == 0:
-            # Initialization
-            v_x_global = (x_global - x_global)/dt
-            v_y_global = (y_global - y_global)/dt
-            it_idx += 1
+    #     if it_idx == 0:
+    #         # Initialization
+    #         v_x_global = (x_global - x_global)/dt
+    #         v_y_global = (y_global - y_global)/dt
+    #         it_idx += 1
         
-        else:
-            v_x_global = (x_global - past_x_global)/dt
-            v_y_global = (y_global - past_y_global)/dt
+    #     else:
+    #         v_x_global = (x_global - past_x_global)/dt
+    #         v_y_global = (y_global - past_y_global)/dt
         
-        ## Get body fixed velocities
-        cosyaw = cos(yaw)
-        sinyaw = sin(yaw)
-        v_x = v_x_global * cosyaw + v_y_global * sinyaw
-        v_y = - v_x_global * sinyaw + v_y_global * cosyaw
+    #     ## Get body fixed velocities
+    #     cosyaw = cos(yaw)
+    #     sinyaw = sin(yaw)
+    #     v_x = v_x_global * cosyaw + v_y_global * sinyaw
+    #     v_y = - v_x_global * sinyaw + v_y_global * cosyaw
 
-        ## Initialize values
-        desired_state = [0, 0, 0, 0]
-        forward_desired = 0
-        sideways_desired = 0
-        yaw_desired = 0
-        height_diff_desired = 0
+    #     ## Initialize values
+    #     desired_state = [0, 0, 0, 0]
+    #     forward_desired = 0
+    #     sideways_desired = 0
+    #     yaw_desired = 0
+    #     height_diff_desired = 0
 
-        key = keyboard.getKey()
-        while key>0:
-            if key == Keyboard.UP:
-                forward_desired += 0.5
-            elif key == Keyboard.DOWN:
-                forward_desired -= 0.5
-            elif key == Keyboard.RIGHT:
-                sideways_desired -= 0.5
-            elif key == Keyboard.LEFT:
-                sideways_desired += 0.5
-            elif key == ord('Q'):
-                yaw_desired =  + 1
-            elif key == ord('E'):
-                yaw_desired = - 1
-            elif key == ord('W'):
-                height_diff_desired = 0.1
-            elif key == ord('S'):
-                height_diff_desired = - 0.1
+    #     key = keyboard.getKey()
+    #     while key>0:
+    #         if key == Keyboard.UP:
+    #             forward_desired += 0.5
+    #         elif key == Keyboard.DOWN:
+    #             forward_desired -= 0.5
+    #         elif key == Keyboard.RIGHT:
+    #             sideways_desired -= 0.5
+    #         elif key == Keyboard.LEFT:
+    #             sideways_desired += 0.5
+    #         elif key == ord('Q'):
+    #             yaw_desired =  + 1
+    #         elif key == ord('E'):
+    #             yaw_desired = - 1
+    #         elif key == ord('W'):
+    #             height_diff_desired = 0.1
+    #         elif key == ord('S'):
+    #             height_diff_desired = - 0.1
 
-            key = keyboard.getKey()
-
-
-        height_desired += height_diff_desired * dt
-
-        ## Example how to get sensor data
-        ## range_front_value = range_front.getValue();
-        ## cameraData = camera.getImage()
+    #         key = keyboard.getKey()
 
 
-        ## PID velocity controller with fixed height
-        motor_power = PID_CF.pid(dt, forward_desired, sideways_desired,
-                                yaw_desired, height_desired,
-                                roll, pitch, yaw_rate,
-                                altitude, v_x, v_y, gains)
+    #     height_desired += height_diff_desired * dt
 
-        m1_motor.setVelocity(-motor_power[0])
-        m2_motor.setVelocity(motor_power[1])
-        m3_motor.setVelocity(-motor_power[2])
-        m4_motor.setVelocity(motor_power[3])
+    #     ## Example how to get sensor data
+    #     ## range_front_value = range_front.getValue();
+    #     ## cameraData = camera.getImage()
 
-        past_time = robot.getTime()
-        past_x_global = x_global
-        past_y_global = y_global
+
+    #     ## PID velocity controller with fixed height
+    #     motor_power = PID_CF.pid(dt, forward_desired, sideways_desired,
+    #                             yaw_desired, height_desired,
+    #                             roll, pitch, yaw_rate,
+    #                             altitude, v_x, v_y, gains)
+
+    #     m1_motor.setVelocity(-motor_power[0])
+    #     m2_motor.setVelocity(motor_power[1])
+    #     m3_motor.setVelocity(-motor_power[2])
+    #     m4_motor.setVelocity(motor_power[3])
+
+    #     past_time = robot.getTime()
+    #     past_x_global = x_global
+    #     past_y_global = y_global
 
 
 
