@@ -87,6 +87,9 @@ while robot.step(TIME_STEP) != -1:
         motor_speed[i] = max(motor_speed[i], -MAX_VELOCITY)
 
     # Set speed values
+    print(motor_speed[0])
+    print(motor_speed[1])
+    
     front_left_motor.setVelocity(motor_speed[0])
     front_right_motor.setVelocity(motor_speed[1])
     rear_left_motor.setVelocity(motor_speed[0])
