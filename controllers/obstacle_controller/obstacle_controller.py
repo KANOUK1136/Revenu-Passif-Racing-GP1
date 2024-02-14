@@ -7,24 +7,24 @@ from controller import Robot, Motor, Camera, Lidar, Accelerometer, Gyro, Compass
 
 TIME_STEP = 32
 MAX_VELOCITY = 26
-base_speed = 26
+base_speed = 18
 
 turn_duration = 1
-left_turn_speed = -MAX_VELOCITY
-right_turn_speed = MAX_VELOCITY
+left_turn_speed = -15
+right_turn_speed = 15
 
 
 # Set empirical coefficients for collision avoidance
-coefficients = [[15.0, -9.0], [-15.0, 9.0]]
+coefficients = [[17.0, -9.0], [-17.0, 9.0]]
 
 # Initialize the robot
 robot = Robot()
 
 # Get motor devices
-front_left_motor = robot.getDevice("front left wheel motor")
-front_right_motor = robot.getDevice("front right wheel motor")
-rear_left_motor = robot.getDevice("rear left wheel motor")
-rear_right_motor = robot.getDevice("rear right wheel motor")
+front_left_motor = robot.getDevice("fl_wheel_joint")
+front_right_motor = robot.getDevice("fr_wheel_joint")
+rear_left_motor = robot.getDevice("rl_wheel_joint")
+rear_right_motor = robot.getDevice("rr_wheel_joint")
 
 # Set target position to infinity (speed control)
 front_left_motor.setPosition(float('inf'))
@@ -51,8 +51,8 @@ gyro.enable(TIME_STEP)
 compass.enable(TIME_STEP)
 
 # Get distance sensors and enable them
-distance_sensors = [robot.getDevice("rear left distance sensor"), robot.getDevice("front left distance sensor"),
-                    robot.getDevice("front right distance sensor"), robot.getDevice("rear right distance sensor")]
+distance_sensors = [robot.getDevice("rl_range"), robot.getDevice("fl_range"),
+                    robot.getDevice("fr_range"), robot.getDevice("rr_range")]
 for sensor in distance_sensors:
     sensor.enable(TIME_STEP)
 
