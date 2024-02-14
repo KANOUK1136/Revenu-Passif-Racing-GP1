@@ -99,8 +99,8 @@ class monRobot(Robot):
         print(self.y)
 
         if self.x < -10 and self.x > -13 and self.y > 13.5 and self.y < 15.8:
-            self.motors.front_lwheel.setVelocity(30)
-            self.motors.back_lwheel.setVelocity(30)
+            self.motors.front_lwheel.setVelocity(36)
+            self.motors.back_lwheel.setVelocity(36)
 
             self.motors.front_rwheel.setVelocity(19)
             self.motors.back_rwheel.setVelocity(19)
