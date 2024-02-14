@@ -15,8 +15,8 @@ def calc_coeff(val):
     
     coef = round(val * 10 / 12000, 2)
 
-    if coef >60:
-        coef = 60
+    if coef >55:
+        coef = 55
     
     if coef <10:
         coef = 10
