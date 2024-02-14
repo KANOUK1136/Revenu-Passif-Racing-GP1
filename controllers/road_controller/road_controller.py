@@ -102,8 +102,8 @@ class monRobot(Robot):
             self.motors.front_lwheel.setVelocity(30)
             self.motors.back_lwheel.setVelocity(30)
 
-            self.motors.front_rwheel.setVelocity(20)
-            self.motors.back_rwheel.setVelocity(20)
+            self.motors.front_rwheel.setVelocity(19)
+            self.motors.back_rwheel.setVelocity(19)
             print("je suis a la fin")
         
         elif  self.y > 15.8 and self.x < -13:
